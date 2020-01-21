@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="google-site-verification" content="6JOm-rADUUclKscUP2KQKXCLa3GSxDkdYanJ2Gp_UcA">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Android,自定义View,color,photoshop,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="景三的个人小站" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="ColorPicker一款基于HSV颜色空间的仿Photoshop取色器的Android版颜色拾取器。 github地址：https://github.com/relish-wang/ColorPicker">
+<meta name="keywords" content="Android,自定义View,color,photoshop">
+<meta property="og:type" content="article">
+<meta property="og:title" content="仿Photoshop取色器ColorPicker(四)">
+<meta property="og:url" content="https://relish.wang/posts/28209/index.html">
+<meta property="og:site_name" content="景三的个人小站">
+<meta property="og:description" content="ColorPicker一款基于HSV颜色空间的仿Photoshop取色器的Android版颜色拾取器。 github地址：https://github.com/relish-wang/ColorPicker">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://img.blog.csdn.net/20170824091959104?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvUjNsaXNo/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2019-06-15T18:43:38.224Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="仿Photoshop取色器ColorPicker(四)">
+<meta name="twitter:description" content="ColorPicker一款基于HSV颜色空间的仿Photoshop取色器的Android版颜色拾取器。 github地址：https://github.com/relish-wang/ColorPicker">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170824091959104?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvUjNsaXNo/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '1W7WH1X9U8',
+      apiKey: '571078d66ea783a4e84ae169dbfb70c7',
+      indexName: 'prod_NAME',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://relish.wang/posts/28209/">
+
+
+
+
+
+  <title>仿Photoshop取色器ColorPicker(四) | 景三的个人小站</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?6ee40a3a9fcafc41fbf03938a8f9189d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+    <a href="https://github.com/relish-wang">
+     <!-- 主页右上角github徽标(主题色#49b1f5) -->
+      <svg width="80" height="80" viewbox="0 0 250 250" style="fill: #49b1f5; color: #fff; position: absolute; top: 0; border: 0; right: 0" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg>
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+      
+    </a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">景三的个人小站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">景行行止, 三省吾身。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://relish.wang/posts/28209/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="景三">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="景三的个人小站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">仿Photoshop取色器ColorPicker(四)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-24T10:14:38+08:00">
+                2017-08-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android自定义View/" itemprop="url" rel="index">
+                    <span itemprop="name">Android自定义View</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/posts/28209/" class="leancloud_visitors" data-flag-title="仿Photoshop取色器ColorPicker(四)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                <span>℃</span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  1.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  6 分
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="ColorPicker"><a href="#ColorPicker" class="headerlink" title="ColorPicker"></a>ColorPicker</h1><p>一款基于HSV颜色空间的仿Photoshop取色器的Android版颜色拾取器。</p>
+<p>github地址：<a href="https://github.com/relish-wang/ColorPicker" target="_blank" rel="noopener">https://github.com/relish-wang/ColorPicker</a></p>
+<a id="more"></a>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上一篇已经简单介绍了<a href="https://github.com/relish-wang/ColorPicker" target="_blank" rel="noopener">ColorPicker</a>的核心自定义控件<a href="https://github.com/relish-wang/ColorPicker/blob/master/library/src/main/java/wang/relish/colorpicker/ColorPickerView.java" target="_blank" rel="noopener">ColorPickerView</a>的监听事件相关代码。接下来我们详细解析一下<a href="https://github.com/relish-wang/ColorPicker/blob/master/library/src/main/java/wang/relish/colorpicker/ColorPickerDialog.java" target="_blank" rel="noopener">ColorPickerDialog</a>的相关代码</p>
+<p><strong>注：</strong></p>
+<ul>
+<li>1 如果你对HSV颜色空间和RGB颜色空间不够熟悉的话，请参看该系列的第一篇文章——<a href="http://relish.wang/2017/08/14/%E4%BB%BFPhotoshop%E5%8F%96%E8%89%B2%E5%99%A8ColorPicker-%E4%B8%80/">仿Photoshop取色器ColorPicker(一)</a></li>
+<li>2 如果你对ColorPickerView的绘制流程不够熟悉的话 ，请参看该系列的第二篇文章<a href="http://relish.wang/2017/08/17/%E4%BB%BFPhotoshop%E5%8F%96%E8%89%B2%E5%99%A8ColorPicker-%E4%BA%8C/">仿Photoshop取色器ColorPicker(二)</a></li>
+<li>3 如果你对ColorPickerView的颜色改变监听不够熟悉的话，请参看该系列第三篇文章<a href="http://relish.wang/2017/08/19/%E4%BB%BFPhotoshop%E5%8F%96%E8%89%B2%E5%99%A8ColorPicker-%E4%B8%89/">仿Photoshop取色器ColorPicker(三)</a></li>
+</ul>
+<p><img src="http://img.blog.csdn.net/20170824091959104?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvUjNsaXNo/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="Dialog示意图"></p>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>这是<code>ColorPickerDialog</code>唯一的构造方法，里面的主要内容都在<code>setUp()</code>方法里。</p>
+<p>稍微梳理一下代码：</p>
+<ul>
+<li>1 文字输入监听：为显示当前选择的颜色的16进制码的EditText设置文字输入监听器</li>
+<li>2 颜色改变监听：为ColorPickerView设置颜色改变监听</li>
+<li>3 设置初始颜色：为ColorPickerDialog和ColorPickerView设置初始颜色</li>
+<li>4 取消/完成颜色拾取：为取消/确认按钮设置监听</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">private ColorPickerDialog(Context context, int initialColor) &#123;</span><br><span class="line">    super(context);</span><br><span class="line">    setUp(initialColor);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private void setUp(int color) &#123;</span><br><span class="line">   // ...</span><br><span class="line">   // 省略丑陋的findViewById们</span><br><span class="line">   // ...</span><br><span class="line"></span><br><span class="line">    mEtHex.setOnEditorActionListener(this);</span><br><span class="line"></span><br><span class="line">	// ...</span><br><span class="line">	// 省略丑陋的findViewById们</span><br><span class="line">	// ...</span><br><span class="line"></span><br><span class="line">    mColorPicker.setOnColorChangedListener(this);</span><br><span class="line">    mOldColor.setBackgroundColor(color); // 颜色预览色板上显示旧颜色</span><br><span class="line">    mColorPicker.setColor(color, true); // 为ColorPickerView设置初始颜色</span><br><span class="line"></span><br><span class="line">    mBtnCancel.setOnClickListener(this); // 取消</span><br><span class="line">    mBtnConfirm.setOnClickListener(this); // 确认选择颜色</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="文字输入监听"><a href="#文字输入监听" class="headerlink" title="文字输入监听"></a>文字输入监听</h3><p>当点击软键盘上的【完成】按钮时触发监听</p>
+<ul>
+<li>1 当输入内容的长度<strong>在0到7之间</strong>(不包含边界)触发<strong>颜色变化</strong><ul>
+<li>当颜色转化发生<strong>异常</strong>时，将内容显示成<strong>红色</strong>以<strong>提醒</strong>用户<strong>输入错误</strong>，且<strong>不</strong>进行<strong>颜色变化</strong></li>
+</ul>
+</li>
+<li>2 当输入内容的长度<strong>不在这个区间</strong>，则将内容显示成<strong>红色</strong>以<strong>提醒</strong>用户<strong>输入错误</strong>，且<strong>不</strong>进行<strong>颜色变化</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public boolean onEditorAction(TextView v, int actionId, KeyEvent event) &#123;</span><br><span class="line">    if (actionId == EditorInfo.IME_ACTION_DONE) &#123;</span><br><span class="line">        InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);</span><br><span class="line">        imm.hideSoftInputFromWindow(v.getWindowToken(), 0);</span><br><span class="line">        String hexVal = mEtHex.getText().toString();</span><br><span class="line">        if (hexVal.length() &gt; 0 || hexVal.length() &lt; 7) &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                int c = Utils.convertToColorInt(hexVal);</span><br><span class="line">                mColorPicker.setColor(c, true);</span><br><span class="line">                mEtHex.setTextColor(mHexDefaultTextColor);</span><br><span class="line">            &#125; catch (IllegalArgumentException e) &#123;</span><br><span class="line">                mEtHex.setTextColor(Color.RED);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            mEtHex.setTextColor(Color.RED);</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="颜色转化"><a href="#颜色转化" class="headerlink" title="颜色转化"></a>颜色转化</h4><p>排除异常情况，正常情况下执行功能的主要是一下三行代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int c = Utils.convertToColorInt(hexVal);</span><br><span class="line">mColorPicker.setColor(c, true);</span><br><span class="line">mEtHex.setTextColor(mHexDefaultTextColor);</span><br></pre></td></tr></table></figure>
+
+<p>让我们查看一下<code>Utils.convertToColorInt()</code>的实现代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * ARGB(含RGB)颜色 转 16进制颜色</span><br><span class="line"> *</span><br><span class="line"> * @param argb ARGB(含RGB)颜色</span><br><span class="line"> * @return 16进制颜色</span><br><span class="line"> * @throws NumberFormatException 当&#123;@param argb&#125;不是一个正确的颜色格式的字符串时</span><br><span class="line"> */</span><br><span class="line">static int convertToColorInt(@NonNull String argb) throws IllegalArgumentException &#123;</span><br><span class="line">    if (argb.matches(&quot;[0-9a-fA-F]&#123;1,6&#125;&quot;)) &#123;</span><br><span class="line">        switch (argb.length()) &#123;</span><br><span class="line">            case 1:</span><br><span class="line">                return Color.parseColor(&quot;#00000&quot; + argb);</span><br><span class="line">            case 2:</span><br><span class="line">                return Color.parseColor(&quot;#0000&quot; + argb);</span><br><span class="line">            case 3:</span><br><span class="line">                char r = argb.charAt(0), g = argb.charAt(1), b = argb.charAt(2);</span><br><span class="line">                //noinspection StringBufferReplaceableByString</span><br><span class="line">                return Color.parseColor(new StringBuilder(&quot;#&quot;)</span><br><span class="line">                        .append(r).append(r)</span><br><span class="line">                        .append(g).append(g)</span><br><span class="line">                        .append(b).append(b)</span><br><span class="line">                        .toString());</span><br><span class="line">            case 4:</span><br><span class="line">                return Color.parseColor(&quot;#00&quot; + argb);</span><br><span class="line">            case 5:</span><br><span class="line">                return Color.parseColor(&quot;#0&quot; + argb);</span><br><span class="line">            case 6:</span><br><span class="line">                return Color.parseColor(&quot;#&quot; + argb);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    throw new IllegalArgumentException(argb + &quot; is not a valid color.&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里的逻辑我主要参考了Photoshop里颜色选择器对手动输入颜色进行的操作。</p>
+<ul>
+<li>1位: #00000x</li>
+<li>2位: #0000xx</li>
+<li>3位: #aabbcc</li>
+<li>4位: #00xxxx</li>
+<li>5位: #0xxxxx</li>
+<li>6位: #xxxxxx</li>
+</ul>
+<p>略微观察可以发现，除了3位的时候要特殊处理，其他的情况下都是在前面加足够数量的0，以凑齐6位颜色编码。</p>
+<p><strong>关于异常处理Tips</strong>：在这里，只要是不符合正则表达式的颜色字符串，都会直接向外抛出异常，而不是进行捕捉。回到前一段关于颜色监听的代码可以发现，在监听中我们捕获了异常，并用输入框颜色的改变以反馈用户。因此对于异常的<strong>捕捉</strong>与<strong>抛</strong>也是有讲究的。</p>
+<h3 id="颜色改变监听"><a href="#颜色改变监听" class="headerlink" title="颜色改变监听"></a>颜色改变监听</h3><p>这里的逻辑就比较显而易见了</p>
+<ul>
+<li>用于显示当前选择的颜色的色块更新颜色</li>
+<li>如果启用了颜色编码显示，则更新输入框中的颜色</li>
+</ul>
+<p><strong>注</strong>：这里可能会有疑问。我在输入框中<strong>手动输入</strong>了颜色编码，从而<code>ColorPickerView</code>更新了颜色，触发了<code>onColorChanged()</code>，反过来<strong>又更新</strong>输入框里的颜色编码。这这这…这难道不就循环了吗？这也是我之前考虑到的一个问题，因此并没有给显示颜色编码的输入框设置<code>TextWatcher</code>，而是<code>OnEditorActionListener</code>，且只有在用户输入完成点输入法右下角的[完成/Done]按钮才会触发。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public void onColorChanged(int color) &#123;</span><br><span class="line">    mNewColor.setBackgroundColor(color);</span><br><span class="line">    if (mHexValueEnabled) updateHexValue(color);</span><br><span class="line">&#125;</span><br><span class="line">private void updateHexValue(int color) &#123;</span><br><span class="line">    mEtHex.setText(Utils.convertToRGB(color).toUpperCase(Locale.getDefault()));</span><br><span class="line">    mEtHex.setTextColor(mHexDefaultTextColor);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建Dialog实例"><a href="#创建Dialog实例" class="headerlink" title="创建Dialog实例"></a>创建Dialog实例</h2><p>ColorPickerDialog的代码量并没有ColorPickerView那么多，其实讲完初始化就已经讲完了它的核心功能的代码了，接下来直接讲解使用。</p>
+<p>回到本文最初介绍ColorPicker初始化的地方，可以看到ColorPickerDialog的唯一的一个构造方法是<code>private</code>的，因为我把它做成了Builder模式，这样使用起来更灵活。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">new ColorPickerDialog.Builder(MainActivity.this, mColor)//上下文, 初始化颜色</span><br><span class="line">    .setHexValueEnabled(mHexValueEnable)//是否显示颜色值(boolean)</span><br><span class="line">    .setOnColorPickedListener(mListener)//设置颜色拾取监听器</span><br><span class="line">    .build()</span><br><span class="line">    .show();//展示</span><br></pre></td></tr></table></figure>
+
+<p>颜色拾取监听器OnColorPickedListener:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public void onColorPicked(int color) &#123;</span><br><span class="line">    mColor = color;</span><br><span class="line">    mViewColor.setBackgroundColor(mColor);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>好了,经过四篇文章的学习，我们已经将ColorPicker中最核心的代码学习完了，相信你从头看到这里对Android自定义View的理解又更深了一层，甚至学到了颜色相关的一些其他知识，比如HSV颜色空间、HSV与RGB颜色转化。</p>
+<p>最后，欢迎大家给我提供宝贵的意见和建议，进一步优化ColorPicker。<br>GitHub地址: <a href="https://github.com/relish-wang/ColorPicker" target="_blank" rel="noopener">https://github.com/relish-wang/ColorPicker</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+          
+            
+
+          
+    </div>
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赞赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/wechatpay.jpg" alt="景三 WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/alipay.jpg" alt="景三 Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    景三
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://relish.wang/posts/28209/" title="仿Photoshop取色器ColorPicker(四)">https://relish.wang/posts/28209/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a> <!-- 这个#号是文章底部的tag们 -->
+          
+            <a href="/tags/自定义View/" rel="tag"># 自定义View</a> <!-- 这个#号是文章底部的tag们 -->
+          
+            <a href="/tags/color/" rel="tag"># color</a> <!-- 这个#号是文章底部的tag们 -->
+          
+            <a href="/tags/photoshop/" rel="tag"># photoshop</a> <!-- 这个#号是文章底部的tag们 -->
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/63693/" rel="next" title="仿Photoshop取色器ColorPicker(三)">
+                <i class="fa fa-chevron-left"></i> 仿Photoshop取色器ColorPicker(三)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/45704/" rel="prev" title="什么2017还是看2018">
+                什么2017还是看2018 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微薄</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+       
+         <div onclick="ShowGitment()" id="gitment-display-button">显示 Gitment 评论</div>
+         <div id="gitment-container" style="display:none"></div>
+       
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/avatar.jpg" alt="景三">
+          <p class="site-author-name" itemprop="name">景三</p>
+           
+              <p class="site-description motion-element" itemprop="description">Android Developer</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/relish-wang" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://stackoverflow.com/users/8012330/relish-wang" target="_blank" title="StackOverflow">
+                  
+                    <i class="fa fa-fw fa-stack-overflow"></i>
+                  
+                    
+                      StackOverflow
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/u/775df29e8e5d" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-book"></i>
+                  
+                    
+                      简书
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/r3lish" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-book"></i>
+                  
+                    
+                      CSDN
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://oj.relish.wang/" title="新城中学在线评测系统" target="_blank">新城中学在线评测系统</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://blog.souche.com/" title="大搜车无线团队" target="_blank">大搜车无线团队</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ColorPicker"><span class="nav-number">1.</span> <span class="nav-text">ColorPicker</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化"><span class="nav-number">1.2.</span> <span class="nav-text">初始化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文字输入监听"><span class="nav-number">1.2.1.</span> <span class="nav-text">文字输入监听</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#颜色转化"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">颜色转化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#颜色改变监听"><span class="nav-number">1.2.2.</span> <span class="nav-text">颜色改变监听</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建Dialog实例"><span class="nav-number">1.3.</span> <span class="nav-text">创建Dialog实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写在最后"><span class="nav-number">1.4.</span> <span class="nav-text">写在最后</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">景三</span>
+</div>
+
+<span id="sitetime"></span>
+<script language="javascript">
+	function siteTime(){
+		window.setTimeout("siteTime()", 1000);
+		var seconds = 1000;
+		var minutes = seconds * 60;
+		var hours = minutes * 60;
+		var days = hours * 24;
+		var years = days * 365;
+
+		var today = new Date();
+		var todayYear = today.getFullYear();
+		var todayMonth = today.getMonth()+1;
+		var todayDate = today.getDate();
+		var todayHour = today.getHours();
+		var todayMinute = today.getMinutes();
+		var todaySecond = today.getSeconds();
+		<!--
+		/* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+		year - 作为date对象的年份，为4位年份值
+		month - 0-11之间的整数，做为date对象的月份
+		day - 1-31之间的整数，做为date对象的天数
+		hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+		minutes - 0-59之间的整数，做为date对象的分钟数
+		seconds - 0-59之间的整数，做为date对象的秒数
+		microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+		-->
+		var t1 = Date.UTC(2016,08,25,9,00,00); <!-- 北京时间2016-8-25 00:00:00 是我入职税友的时间(第一次参加工作(实习)的时间) -->
+		var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+		var diff = t2-t1;
+
+		var diffYears = Math.floor(diff/years);
+		var diffDays = Math.floor((diff/days)-diffYears*365);
+		var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+		var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+		var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+
+	    document.getElementById("sitetime").innerHTML=" 本站已运行"+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+	}  /* 因为建站时间还没有一年，就将之注释掉了。需要的可以取消 */
+	siteTime();
+</script>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+
+    <div class="theme-info">
+      <div class="powered-by"></div>
+      <span class="post-count">博客全站共26.4k字</span>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+   
+   
+   
+   
+   <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+   <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+   
+       <script type="text/javascript">
+           function ShowGitment(){
+               document.getElementById("gitment-display-button").style.display = "none";
+               document.getElementById("gitment-container").style.display = "block";
+               var gitment = new Gitment({
+                   id: document.location.href,
+                   owner: 'relish-wang',
+                   repo: 'relish-wang.github.io',
+                   oauth: {
+                       client_id: '1c0d6e867723f2ccd28c',
+                       client_secret: '0c272975d0604dfe8ae56691ca204b8f226df5ea',
+                   }});
+               gitment.render('gitment-container');
+           }
+       </script>
+   
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("JNpHnH5xteXpGDJi3r2sAORA-gzGzoHsz", "nRjV2vJaN1xJ9MPx848hbRLu");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+
+
+  
+
+  
+
+  <script type="text/javascript" src="/lib/clipboard/clipboard.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+  
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
+</html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>

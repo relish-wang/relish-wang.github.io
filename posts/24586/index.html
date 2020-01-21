@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+  <meta name="google-site-verification" content="6JOm-rADUUclKscUP2KQKXCLa3GSxDkdYanJ2Gp_UcA">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Android Studio,Template,gradle,gradlew,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="景三的个人小站" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="本篇文章已授权微信公众号 guolin_blog （郭霖）独家发布 先上对比图(左侧是我们手动构建的最简单的Android项目;右侧是Android Studio默认创建的项目模板工程):">
+<meta name="keywords" content="Android Studio,Template,gradle,gradlew">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从手写最简单的Android程序到Android Studio项目模板的全面解析">
+<meta property="og:url" content="https://relish.wang/posts/24586/index.html">
+<meta property="og:site_name" content="景三的个人小站">
+<meta property="og:description" content="本篇文章已授权微信公众号 guolin_blog （郭霖）独家发布 先上对比图(左侧是我们手动构建的最简单的Android项目;右侧是Android Studio默认创建的项目模板工程):">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://relish.wang/posts/24586/contrast_hand_and_template.png">
+<meta property="og:image" content="https://relish.wang/posts/24586/exec_hello_java.png">
+<meta property="og:image" content="https://relish.wang/posts/24586/gradle-v.png">
+<meta property="og:image" content="https://relish.wang/posts/24586/gradle_assemble.png">
+<meta property="og:image" content="https://relish.wang/posts/24586/without_android_home.png">
+<meta property="og:image" content="https://relish.wang/posts/24586/android_home.png">
+<meta property="og:image" content="https://relish.wang/posts/24586/local_properties.png">
+<meta property="og:image" content="https://relish.wang/posts/24586/desktop_icon.png">
+<meta property="og:image" content="https://relish.wang/posts/24586/mainactivity.jpg">
+<meta property="og:image" content="https://relish.wang/posts/24586/contrast_hand_and_template.png">
+<meta property="og:updated_time" content="2019-06-15T18:43:38.215Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从手写最简单的Android程序到Android Studio项目模板的全面解析">
+<meta name="twitter:description" content="本篇文章已授权微信公众号 guolin_blog （郭霖）独家发布 先上对比图(左侧是我们手动构建的最简单的Android项目;右侧是Android Studio默认创建的项目模板工程):">
+<meta name="twitter:image" content="https://relish.wang/posts/24586/contrast_hand_and_template.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '1W7WH1X9U8',
+      apiKey: '571078d66ea783a4e84ae169dbfb70c7',
+      indexName: 'prod_NAME',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://relish.wang/posts/24586/">
+
+
+
+
+
+  <title>从手写最简单的Android程序到Android Studio项目模板的全面解析 | 景三的个人小站</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?6ee40a3a9fcafc41fbf03938a8f9189d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+    <a href="https://github.com/relish-wang">
+     <!-- 主页右上角github徽标(主题色#49b1f5) -->
+      <svg width="80" height="80" viewbox="0 0 250 250" style="fill: #49b1f5; color: #fff; position: absolute; top: 0; border: 0; right: 0" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg>
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+      
+    </a>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">景三的个人小站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">景行行止, 三省吾身。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://relish.wang/posts/24586/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="景三">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="景三的个人小站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">从手写最简单的Android程序到Android Studio项目模板的全面解析</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-24T20:25:30+08:00">
+                2018-06-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android-Studio/" itemprop="url" rel="index">
+                    <span itemprop="name">Android Studio</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/posts/24586/" class="leancloud_visitors" data-flag-title="从手写最简单的Android程序到Android Studio项目模板的全面解析">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                <span>℃</span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  4.7k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  19 分
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><em>本篇文章已授权微信公众号 guolin_blog （郭霖）独家发布</em></p>
+<p>先上对比图(左侧是我们手动构建的最简单的Android项目;右侧是Android Studio默认创建的项目模板工程):</p>
+<a id="more"></a>
+
+<p><img src="/posts/24586/contrast_hand_and_template.png" alt="contrast_hand_and_template"></p>
+<!-- more -->
+<h2 id="0-序言"><a href="#0-序言" class="headerlink" title="0 序言"></a>0 序言</h2><p>  进入正题前，先说个与<strong>手写程序</strong>(不借助IDE)类似的场景。我回想起以前初学Java时的场景—— 如何用记事本写一个HelloWorld。    </p>
+<ul>
+<li><p>1 先写个最简单的Java程序：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"Hello Java!"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>2 在当前目录下运行<code>javac A.java</code>(编译A.java文件，生成A.class文件)</p>
+</li>
+<li><p>3 在当前目录下运行<code>javac A</code>(执行class文件)</p>
+</li>
+<li><p>4 就会看到<code>Hello Java!</code>被打印在控制台(终端)上<br>  <img src="/posts/24586/exec_hello_java.png" alt="hello_java"></p>
+</li>
+</ul>
+<p>用记事本开发Java程序确实简单，三两句话就讲完了。Android程序有那么多文件(<code>AndroidManifest.xml</code>、<code>启动的Activity</code>、<code>layout文件</code>、<code>icon图标</code>、<code>strings.xml</code>、<code>styles.xml文件</code>)，这可咋整啊？<br>要是你认同这句话, 说明你早就已经习惯于Android Studio为你生成的项目模板(以下简称”AS项目模板”), 而失去了作为一位Android开发者自我的判断——一个最简单的Android程序到底需要哪些文件。<br>AS项目模板(未在括号里标注的文件/文件夹都是gradle相关的, 下文会详细讲解):</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">├── app(主工程)</span><br><span class="line">│   ├── app.iml(AS项目配置文件)</span><br><span class="line">│   ├── build(项目构建导出目录, 含apk)</span><br><span class="line">|   ├── build.gradle</span><br><span class="line">│   ├── libs(空文件夹)</span><br><span class="line">│   ├── proguard-rules.pro(混淆配置)</span><br><span class="line">│   └── src(源码)</span><br><span class="line">├── .gitignore(记录需要被git忽略的文件/文件夹)</span><br><span class="line">├── build</span><br><span class="line">├── build.gradle</span><br><span class="line">├── demo.iml(AS项目配置文件)</span><br><span class="line">├── gradle(文件夹)</span><br><span class="line">├── gradle.properties</span><br><span class="line">├── gradlew</span><br><span class="line">├── gradlew.bat</span><br><span class="line">├── local.properties</span><br><span class="line">└── settings.gradle</span><br></pre></td></tr></table></figure>
+
+<p>我可以告诉你, 上面所说的文件里，其实只有<strong>AndroidManifest.xml</strong>是必须的(图形页面对于Android程序来说并不是必须的, 比如<strong>只运行在后台的Service</strong>)。但是为了本文章的展示效果, 还是保留Activity。(有Activity也并不意味着一定需要layout.xml)</p>
+<h2 id="1-准备"><a href="#1-准备" class="headerlink" title="1 准备"></a>1 准备</h2><p>前面丢了些悬念, 但我们还不能进入正题。先做或确保一些准备工作。<br>我们需要准备三样东西: <code>Java SDK</code>、<code>Android SDK</code>、<code>Gradle SDK</code> 。<br>前两样是Android开发必备的环境,  作为Android开发者自然不用多说。(请确保配置了ANDROID_HOME)<br>第三样是项目自动化构建工具(gradle), 可以用于构建Android项目。</p>
+<h3 id="1-1-配置gradle"><a href="#1-1-配置gradle" class="headerlink" title="1.1 配置gradle"></a>1.1 配置gradle</h3><p>如果你是macOS用户, 只需执行一条命令即可配置好最新版本的gradle环境: <code>brew install gradle</code>;  
+如果你使用的是其他操作系统, 可以参看: <a href="https://gradle.org/install/" target="_blank" rel="noopener">https://gradle.org/install/</a><br>(确保配置了GRADLE_HOME)<br>配置完毕后运行<code>gradle -v</code>, 检查是否配置完成。<br> <img src="/posts/24586/gradle-v.png" alt="gradle-v"></p>
+<h2 id="2-写一个最最简单的Android程序"><a href="#2-写一个最最简单的Android程序" class="headerlink" title="2 写一个最最简单的Android程序"></a>2 写一个最最简单的Android程序</h2><p>开门见山, 先放目录结构。需要手动编写的就三个文件<strong>MainActivity.java</strong>、<strong>AndroidManifest.xml</strong>、<strong>build.gradle</strong>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">demo</span><br><span class="line">└─ src</span><br><span class="line">    ├─ main</span><br><span class="line">    │   ├─ java</span><br><span class="line">    │   │   └─ wang.relish.demo</span><br><span class="line">    │   │       └─ MainActivity.java</span><br><span class="line">    │   └─ AndroidManifest.xml</span><br><span class="line">    └─ build.gradle</span><br></pre></td></tr></table></figure>
+
+<p><strong><code>MainActivity.java</code></strong> 内容如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> wang.relish.demo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.app.Activity;</span><br><span class="line"><span class="keyword">import</span> android.widget.TextView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span></span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span></span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">    TextView tv = <span class="keyword">new</span> TextView(<span class="keyword">this</span>);</span><br><span class="line">    tv.setText(<span class="string">"Hello, beautiful world!"</span>);</span><br><span class="line">    setContentView(tv);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong><code>AndroidManifest.xml</code></strong> 内容如下:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8" ?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">manifest</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">package</span>=<span class="string">"wang.relish.demo"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">applcation</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">activity</span> <span class="attr">anroid:name</span>=<span class="string">".MainActivity"</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">application</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong><code>build.gradle</code></strong> 内容如下:</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        jcenter()</span><br><span class="line">        google()</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath <span class="string">'com.android.tools.build:gradle:3.1.3'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">allprojects&#123;</span><br><span class="line">    repositories&#123;</span><br><span class="line">        jcenter()</span><br><span class="line">        google()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">apply <span class="string">plugin:</span> <span class="string">'com.android.application'</span></span><br><span class="line">android &#123;</span><br><span class="line">    compileSdkVersion <span class="number">27</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-生成项目的构建文件"><a href="#3-生成项目的构建文件" class="headerlink" title="3 生成项目的构建文件"></a>3 生成项目的构建文件</h2><p>接下来才是真正见证奇迹的时刻。<br>在<code>demo</code>(项目根目录)下执行<code>gradle assemble</code>, 如果你看到下图的执行结果说明运行成功了, 可以略过下文的错误说明, 请看<a href="#执行完成">执行完成</a>。
+<img src="/posts/24586/gradle_assemble.png" alt="gradle_assemble"><br>如果你遇到如下错误, 则说明你未配置<code>ANDROID_HOME</code>环境变量。<br><img src="/posts/24586/without_android_home.png" alt="without_andrid_home"><br>解决方案有二:</p>
+<ul>
+<li>1)  配置ANDROID_HOME环境变量。下图是笔者电脑上的配置:<br><img src="/posts/24586/android_home.png" alt="android_home"></li>
+<li>2) 在demo(项目根目录)下新建<code>local.properties</code>文件, 输入AndroidSDK所在路径：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sdk.dir=/Users/relish/Library/Android/sdk</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>下图是笔者电脑上的配置:<br>  <img src="/posts/24586/local_properties.png" alt="local_properties"></p>
+<h3 id="执行完成"><a href="#执行完成" class="headerlink" title="执行完成"></a>执行完成</h3><p>执行完成后目录结构如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">├── .gradle(gradle任务相关缓存)</span><br><span class="line">├── build(执行assemble命令后生成的文件, apk文件也在这里面)</span><br><span class="line">├── build.gradle</span><br><span class="line">└── src</span><br><span class="line">    └── main</span><br><span class="line">        ├── java</span><br><span class="line">        │   └── wang.relish.demo</span><br><span class="line">        │       └── MainActivity.java</span><br><span class="line">        └── AndroidManifest.xml</span><br></pre></td></tr></table></figure>
+
+<p>在<code>/build/outputs/apk</code>的<code>debug</code>和<code>release</code>文件下就可以看到生成的apk文件了。<br>安装apk文件后,  桌面图标如下(不同Android版本上显示的默认logo不同)：<br> <img src="/posts/24586/desktop_icon.png" alt="desktop_icon"><br>运行可以看到如下画面：<br> <img src="/posts/24586/mainactivity.jpg" alt="mainactivity"></p>
+<p>也许看到这里的读者开始有些疑问了。为什么只要这么三个文件就够了？哪怕构建后也只多了两个文件夹？AndroidStudio生成的空项目里还有<code>setting.gradle</code>、<code>.idea</code>文件夹、<code>gradle</code>文件夹、<code>*.iml</code>文件、<code>gradlew</code>、<code>gradlew.bat</code>等, 这么多文件呢!</p>
+<h2 id="4-由简入繁"><a href="#4-由简入繁" class="headerlink" title="4 由简入繁"></a>4 由简入繁</h2><p>如果你觉得这篇文章就这么结束了, 那你就想得太简单了。<br>莫慌, 正片开始!  
+接下来我要讲的是, 这个项目如何一步一步转化为我们熟悉的AndroidStudio的默认创建项目。</p>
+<h3 id="4-1-Gradle-Wrapper"><a href="#4-1-Gradle-Wrapper" class="headerlink" title="4.1 Gradle Wrapper"></a>4.1 Gradle Wrapper</h3><p>Gradle Wrapper是对Gradle的一层包装, 便于团队开发过程中统一Gradle构建的版本。 我们在项目开发过程中, 用的都是Wrapper这种方式。所以前面用的gradle相关命令建议都改为gradlew的命令(如:  <code>gradle assemble</code>改为<code>./gradlew assemble</code>)。  </p>
+<p>在<code>demo</code>(项目根目录)下执行<code>gradle wrapper</code>, 执行完成后目录结构下<strong>新增</strong>的文件/文件夹如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">├─ gradle</span><br><span class="line">│  └─ wrapper</span><br><span class="line">│     ├─ gradle-wrapper.jar</span><br><span class="line">│     └─ gradle-wrapper.properties</span><br><span class="line">├─ gradlew</span><br><span class="line">└─ gradlew.bat</span><br></pre></td></tr></table></figure>
+
+<p><code>gradlew</code>和<code>gradlew.bat</code>分别是Linux和Windows下的可执行脚本。<br><code>gradle-wrapper.jar</code>是具体业务逻辑实现的jar包。gradlew最终是使用这个jar包来执行相关的Gradle操作。<br><code>gradle-wrapper.properties</code>是配置文件, 用于配置使用哪个版本的Gradle等。  </p>
+<p>打开<code>gradle-wrapper.properties</code>文件, 可以看到以下内容:</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">distributionBase=GRADLE_USER_HOME</span><br><span class="line">distributionPath=wrapper<span class="regexp">/dists</span></span><br><span class="line"><span class="regexp">distributionUrl=https\:/</span><span class="regexp">/services.gradle.org/</span>distributions<span class="regexp">/gradle-4.8-bin.zip</span></span><br><span class="line"><span class="regexp">zipStoreBase=GRADLE_USER_HOME</span></span><br><span class="line"><span class="regexp">zipStorePath=wrapper/</span>dists</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">字段名</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">distributionBase</td>
+<td align="left">下载的Gradle压缩包解压后储存的主目录</td>
+</tr>
+<tr>
+<td align="left">distributionPath</td>
+<td align="left">相对于distributionBase的解压后的Gradle压缩包的路径</td>
+</tr>
+<tr>
+<td align="left">zipStoreBase</td>
+<td align="left">同distributionBase， 只不过是存放zip压缩包的</td>
+</tr>
+<tr>
+<td align="left">zipStorePath</td>
+<td align="left">同distributionPath， 只不过是存放zip压缩包的</td>
+</tr>
+<tr>
+<td align="left">distributionUrl</td>
+<td align="left">Gradle发型版压缩包的下载地址</td>
+</tr>
+<tr>
+<td align="left">这里我们基本只需关注<code>distributionUrl</code>即可, 这个字段决定了你的gradle wrapper依赖哪个gradle版本。</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<ul>
+<li>为什么要使用Wrapper?使用Wrapper有什么好处?  <blockquote>
+<p>因为使用gradle wrapper的方式不需要提前将gradle下载好，而是会自动根据本地的缓存情况决定是否需要联网下载gradle。而且假设每个开发者电脑上未安装/配置gradle环境, 那么他/她仍能通过执行gradlew命令执行gradle相关任务。而且wrapper规定了使用的gradle版本, 在团队开发中, 执行gradlew命令运行的都是同一个版本的gradle。避免了每个团队成员电脑上配置的gradle版本不同而带来的执行结果的差异。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="4-2-多工程配置"><a href="#4-2-多工程配置" class="headerlink" title="4.2 多工程配置"></a>4.2 多工程配置</h3><h4 id="settings-gradle"><a href="#settings-gradle" class="headerlink" title="settings.gradle"></a>settings.gradle</h4><p>到这里为止, 先来看一下我们项目的目录结构:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">├─ .gradle(文件夹)</span><br><span class="line">├─ build(文件夹, 可删)</span><br><span class="line">├─ gradle(文件夹)</span><br><span class="line">├─ gradlew</span><br><span class="line">├─ gradlew.bat</span><br><span class="line">├─ build.gradle</span><br><span class="line">├─ local.properties(可选)</span><br><span class="line">└─ src</span><br><span class="line">    └─ main</span><br><span class="line">       ├─ java</span><br><span class="line">       │   └─ wang.relish.demo</span><br><span class="line">       │      └─ MainActivity.java</span><br><span class="line">       └─ AndroidManifest.xml</span><br></pre></td></tr></table></figure>
+
+<p>仔细观察发现, 少了<code>settings.gradle</code>文件,  而且这个<code>src</code>目录外面应该再包一层<code>app</code>目录…即便这样<code>app</code>里也少了一些其他的文件…莫慌, 我们一点点来分析。  </p>
+<p><code>settings.gradle</code>文件大多数的作用是为了配置子工程(moudle)。但由于我们这个”最简单的Android程序”是一个单工程的项目, 所以<code>settings.gradle</code>并不是必须的。但是, 在实际开发过程中, 项目(Project)大多为多工程(module), 因此AS项目模板是会默认配置好<code>settings.gradle</code>, 并且主工程也被包装成一个名为<code>app</code>的子工程(moudle)。  </p>
+<p><code>settings.gradle</code>的内容也很简单:</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include <span class="string">':app'</span></span><br></pre></td></tr></table></figure>
+
+<p>如果有多个module则用逗号隔开(不过我们这次不需要):</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include <span class="string">':app'</span>, <span class="string">':module1'</span>, <span class="string">':module2'</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="子工程配置"><a href="#子工程配置" class="headerlink" title="子工程配置"></a>子工程配置</h4><p>在<code>demo</code>(项目根目录)下, 新建<code>app</code>文件夹，将<code>demo</code>(项目根目录)下的<strong>src文件夹</strong>和<code>build.gradle</code>移动/剪切到新建的<code>app</code>目录下。  </p>
+<p>这时再次执行<code>./gradlew assemble</code>, 已经可以生成apk文件了。但总觉得还是跟AS项目模板有些不同——根目录少了一个build.gradle文件。此时的工程目录:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">├─ .gradle(文件夹)</span><br><span class="line">├─ gradle(文件夹, 含wrapper配置)</span><br><span class="line">├─ gradlew</span><br><span class="line">├─ gradlew.bat</span><br><span class="line">├─ local.properties(可选)</span><br><span class="line">├─ settings.gradle(多工程配置)</span><br><span class="line">└─ app</span><br><span class="line">   ├─ build.gradle(从根目录移动进来的)   </span><br><span class="line">   └─ src(源码文件夹)</span><br></pre></td></tr></table></figure>
+
+<p>既然是多工程配置, 那么每个子工程(module)都需要的配置就可以做成项目(project)配置, 减少重复代码。</p>
+<p>因此我们把<code>./app/build.gradle</code>内的部分内容移动到根目录下的<code>build.gradle</code>中。</p>
+<p>./build.gradle内容:</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123; <span class="comment">// 一个在项目构建之前, 为项目进行前期准备和初始化相关配置依赖的地方</span></span><br><span class="line">    repositories &#123; 配置需要依赖的gradle插件所在的仓库地址</span><br><span class="line">        jcenter()</span><br><span class="line">        google()</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123; <span class="comment">// 配置需要依赖的gradle插件</span></span><br><span class="line">        classpath <span class="string">'com.android.tools.build:gradle:3.1.3'</span> <span class="comment">// Android Gradle 插件</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">allprojects&#123;</span><br><span class="line">    repositories&#123;</span><br><span class="line">        jcenter()</span><br><span class="line">        google()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>./app/build.gradle内容:</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">apply <span class="string">plugin:</span> <span class="string">'com.android.application'</span></span><br><span class="line">android &#123;</span><br><span class="line">    compileSdkVersion <span class="number">27</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到根目录下的build.gradle已经和AS项目模板长得很像了, 区别在与下面这段代码:</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">task clean(<span class="string">type:</span> Delete) &#123;</span><br><span class="line">    delete rootProject.buildDir</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里定义了一个名为clean的gradle任务(task)，我们可以通过运行<code>./gradlew clean</code>执行这个任务。它的执行结果就是删除主项目的build文件夹。</p>
+<p>忘了说, 现在再执行<code>./gradlew assemble</code>, <code>build</code>文件夹会生成在<code>app</code>目录下。再执行<code>./gradlew clean</code>就会删除<code>app</code>目录下的<code>build</code>文件夹。</p>
+<h3 id="4-3-其他未介绍的文件"><a href="#4-3-其他未介绍的文件" class="headerlink" title="4.3 其他未介绍的文件"></a>4.3 其他未介绍的文件</h3><p>其实文章讲解到这里, 我们手动修改的项目已经和AS项目模板大致相同了。因为此文介绍的重点其实是<em>gradle构建工具</em>和<em>一个最简单的Android项目需要那些文件</em>。但鉴于这里还有一些文件未提及，笔者决定简单介绍一下它们。</p>
+<table>
+<thead>
+<tr>
+<th align="left">文件</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">*.iml、.idea文件夹</td>
+<td align="left">JetBrain家的IDEA系列IDE的项目配置文件(Android Studio是基于IntelliJ IDEA的), 可以删除,下次用Android Studio打开时会自动生成</td>
+</tr>
+<tr>
+<td align="left">gradle.properties</td>
+<td align="left">可以放置gradle相关的全局常量声明和项目运行内存设置等</td>
+</tr>
+<tr>
+<td align="left">local.properties</td>
+<td align="left">声明AndroidSDK和NDK所在路径</td>
+</tr>
+<tr>
+<td align="left">app/proguard-rules.pro</td>
+<td align="left">代码混淆配置</td>
+</tr>
+<tr>
+<td align="left">app/libs</td>
+<td align="left">存放jar/aar包</td>
+</tr>
+<tr>
+<td align="left">.gitignore、app/.gitignore</td>
+<td align="left">记录需要被git忽略的文件/文件夹</td>
+</tr>
+</tbody></table>
+<p><code>.gitignore</code>文件通常需要填写的内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.gradle/</span><br><span class="line">.idea/</span><br><span class="line">build/</span><br><span class="line">*.iml</span><br><span class="line">local.properties</span><br></pre></td></tr></table></figure>
+
+<p>app/.gitignore文件通常需要填写的内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">build/</span><br><span class="line">*.iml</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-app主工程"><a href="#5-app主工程" class="headerlink" title="5 app主工程"></a>5 app主工程</h2><p>文章讲解到这里,  我们手动修改的项目和AS项目模板的区别剩下app(主工程目录)目录下的文件内容、目录结构不同了。<br><img src="/posts/24586/contrast_hand_and_template.png" alt="contrast_hand_and_template"></p>
+<p>二者不同的地方都已经用黄框和蓝框标出来了。其中黄框标注的文件已经在前文介绍过它们的作用了。下面介绍一下蓝框里的文件/文件夹。</p>
+<h3 id="5-1-单元测试"><a href="#5-1-单元测试" class="headerlink" title="5.1 单元测试"></a>5.1 单元测试</h3><p><code>androidTest</code>文件夹和<code>test</code>文件夹分别是Android单元测试和Java单元测试相关的目录。AS模板项目所用的单元测试框架是Java单元测试框架<a href="https://junit.org/junit5/" target="_blank" rel="noopener">junit</a>、<a href="https://developer.android.com/reference/android/support/test/runner/AndroidJUnit4" target="_blank" rel="noopener">AndroidJUnit</a>、Android UI自动化测试框架<a href>espresso</a>。</p>
+<p>由于篇幅原因，关于<strong>单元测试</strong>的用法就不在此文中详细描述，感兴趣的读者可以查阅文末的引用资料或自行搜索相关资料进行学习。</p>
+<h3 id="5-2-资源文件"><a href="#5-2-资源文件" class="headerlink" title="5.2 资源文件"></a>5.2 资源文件</h3><p>所有的资源文件夹都有<code>-v[api-level]</code>的形式、<code>-[各国语言缩写]</code>国际化资源的形式。如:<code>drawable-zh-ldpi</code>、<code>values-en</code>、<code>drawable-v21</code>。</p>
+<h4 id="drawable"><a href="#drawable" class="headerlink" title="drawable"></a>drawable</h4><p>存放图片/图标文件以及样式相关的文件</p>
+<table>
+<thead>
+<tr>
+<th align="left">文件夹</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">drawable</td>
+<td align="left">放置selector、shape、vector文件</td>
+</tr>
+<tr>
+<td align="left">drawable-mdpi</td>
+<td align="left">中分辨率图标(72*72, 320*480)</td>
+</tr>
+<tr>
+<td align="left">drawable-hdpi</td>
+<td align="left">高分辨率图标(尺寸标准:48*48, 对应手机分辨率:480*800)</td>
+</tr>
+<tr>
+<td align="left">drawable-xhdpi</td>
+<td align="left">超高分辨率图标(96*96, 720*1280)</td>
+</tr>
+<tr>
+<td align="left">drawable-xxhdpi</td>
+<td align="left">超超高分辨率图标(144*144, 1080*1920), 主流分辨率</td>
+</tr>
+<tr>
+<td align="left">drawable-xxxhdpi</td>
+<td align="left">超超超高分辨率图标(192*192, 3840*2160)</td>
+</tr>
+<tr>
+<td align="left">drawable-v19</td>
+<td align="left">Android4.4(API19)及以上特别设置的样式/图标</td>
+</tr>
+<tr>
+<td align="left">drawable-v21</td>
+<td align="left">Android5.0(API21)及以上特别设置的样式/图标</td>
+</tr>
+<tr>
+<td align="left">drawable-v24</td>
+<td align="left">Android7.0(API24)及以上特别设置的样式/图标</td>
+</tr>
+</tbody></table>
+<p>drawable-v[API-version]: 此类文件夹下的同名图标会默认使用最高版本的。如: <code>ic_avatar.png</code>分别在<code>drawable-v19</code>和<code>drawable-v21</code>分别有两个长得不同的图标文件, 如果运行的手机是Android5.1(API22)的, 那么它会加载<code>drawable-v21</code>下的<code>ic_avatar.png</code>;但如果仅在<code>drawable-v19</code>下放置了<code>ic_avatar.png</code>，<code>drawable-v21</code>没有的话, 在这台手机上运行时就会加载<code>drawable-v19</code>下的<code>ic_avatar.png</code>;如果drawable-v[API-version]此类文件夹未放置<code>ic_avatar.png</code>图标, 则会加载对应分辨率文件夹下的<code>ic_avatar.png</code>; 要是各分辨率的文件夹里也没有<code>ic_avatar.png</code>的话，就会加载<code>drawable</code>文件夹下的<code>ic_avatar.png</code>。</p>
+<p>图标加载顺序:</p>
+<p><code>drawable-v[对应的高API]</code>-&gt;<code>drawble-v[低API]</code>-&gt;<code>drawable-[对应高分辨率]dpi</code>-&gt;<code>drawable-[低分辨率]dpi</code>-&gt;<code>drawable</code></p>
+<h4 id="layout"><a href="#layout" class="headerlink" title="layout"></a>layout</h4><table>
+<thead>
+<tr>
+<th align="left">文件夹</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">layout</td>
+<td align="left">默认加载的布局文件</td>
+</tr>
+<tr>
+<td align="left">layout-land</td>
+<td align="left">横屏时加载的布局文件</td>
+</tr>
+<tr>
+<td align="left">layout-port</td>
+<td align="left">竖屏时加载的布局文件</td>
+</tr>
+<tr>
+<td align="left">布局文件加载顺序:</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">(根据屏幕状态而定)<code>layout-land</code>或<code>layout-port</code>-&gt;<code>layout</code></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<h4 id="mipmap"><a href="#mipmap" class="headerlink" title="mipmap"></a>mipmap</h4><p>用法与drawable一致。区别在于: mipmap文件夹仅仅用于放置app的logo图标。</p>
+<h4 id="values"><a href="#values" class="headerlink" title="values"></a>values</h4><p>AS项目模板:</p>
+<table>
+<thead>
+<tr>
+<th align="left">文件</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">colors.xml</td>
+<td align="left">颜色值常量</td>
+</tr>
+<tr>
+<td align="left">strings.xml</td>
+<td align="left">字符串常量</td>
+</tr>
+<tr>
+<td align="left">styles.xml</td>
+<td align="left">样式常量</td>
+</tr>
+</tbody></table>
+<p>除此之外还可以有以下文件:</p>
+<table>
+<thead>
+<tr>
+<th align="left">文件</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">ids.xml</td>
+<td align="left">id常量(int类型)</td>
+</tr>
+<tr>
+<td align="left">arrays.xml</td>
+<td align="left">数组常量</td>
+</tr>
+<tr>
+<td align="left">attrs.xml</td>
+<td align="left">属性声明, 用于自定义View</td>
+</tr>
+<tr>
+<td align="left">dimens.xml</td>
+<td align="left">尺寸常量。长度(dp)、字体大小(sp)、像素值(px)等</td>
+</tr>
+<tr>
+<td align="left">…</td>
+<td align="left">…</td>
+</tr>
+</tbody></table>
+<p>其实并不需要拘泥于这些文件名, 想取啥文件名都行, 甚至这些文件里的内容也可以全写在一个文件里(但推荐写法还是分开写, 各司其职):</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">&lt;!-- from arrays.xml --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">string-array</span> <span class="attr">name</span>=<span class="string">"sex"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">item</span>&gt;</span>女<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">item</span>&gt;</span>男<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">string-array</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- from attrs.xml --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">declare-styleable</span> <span class="attr">name</span>=<span class="string">"customView"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">attr</span> <span class="attr">name</span>=<span class="string">"customAttr"</span> <span class="attr">format</span>=<span class="string">"string"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">declare-styleable</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- from colors.xml --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">color</span> <span class="attr">name</span>=<span class="string">"colorPrimary"</span>&gt;</span>#3F51B5<span class="tag">&lt;/<span class="name">color</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- from dimen.xml --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dimen</span> <span class="attr">name</span>=<span class="string">"title_text_size"</span>&gt;</span>16sp<span class="tag">&lt;/<span class="name">dimen</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">&lt;!-- from strings.xml --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">string</span> <span class="attr">name</span>=<span class="string">"app_name"</span>&gt;</span>demo<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">&lt;!-- from styles.xml --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"AppTheme"</span> <span class="attr">parent</span>=<span class="string">"Theme.AppCompat.Light.DarkActionBar"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"colorPrimary"</span>&gt;</span>@color/colorPrimary<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"colorPrimaryDark"</span>&gt;</span>@color/colorPrimaryDark<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"colorAccent"</span>&gt;</span>@color/colorAccent<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- ... --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="其他资源文件"><a href="#其他资源文件" class="headerlink" title="其他资源文件"></a>其他资源文件</h4><p>这里还有一些常见资源文件/文件夹未提及, 将在下方表格中列出:</p>
+<table>
+<thead>
+<tr>
+<th align="left">文件夹</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">anim</td>
+<td align="left">动画文件</td>
+</tr>
+<tr>
+<td align="left">raw</td>
+<td align="left">媒体文件(音频、视频文件)</td>
+</tr>
+<tr>
+<td align="left">xml</td>
+<td align="left">其他的xml类型文件</td>
+</tr>
+<tr>
+<td align="left">menu</td>
+<td align="left">菜单文件</td>
+</tr>
+</tbody></table>
+<h3 id="5-3-app-build-gradle"><a href="#5-3-app-build-gradle" class="headerlink" title="5.3 app/build.gradle"></a>5.3 app/build.gradle</h3><p>AS项目模板的<code>app/build.gradle</code>文件内容:</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">apply <span class="string">plugin:</span> <span class="string">'com.android.application'</span> <span class="comment">// 应用Android Gradle插件. (有些网友在介绍gradle的文章中把它描述为"声明是Android程序",纯属扯淡)</span></span><br><span class="line"></span><br><span class="line">android &#123; <span class="comment">// Android Gradle插件为Project对象添加的一个拓展</span></span><br><span class="line">    compileSdkVersion <span class="number">26</span> <span class="comment">// 编译版本</span></span><br><span class="line">    defaultConfig &#123;</span><br><span class="line">        applicationId <span class="string">"wang.relish.demo"</span> <span class="comment">// 应用包名</span></span><br><span class="line">        minSdkVersion <span class="number">14</span> <span class="comment">// 此app允许运行的最低的API版本的手机</span></span><br><span class="line">        targetSdkVersion <span class="number">26</span> <span class="comment">// 允许使用新特性的最高版本。也就是说API27及以上的手机也能安装这个app, 但仅仅有API26及以下的新特性</span></span><br><span class="line">        versionCode <span class="number">1</span>  <span class="comment">// app版本编号</span></span><br><span class="line">        versionName <span class="string">"1.0"</span> <span class="comment">// app版本号。其实就是个字符串叫啥都可以。业内统一使用xxx.xxx.xxx的形式。</span></span><br><span class="line">        testInstrumentationRunner <span class="string">"android.support.test.runner.AndroidJUnitRunner"</span> <span class="comment">// 单元测试: AndroidJUnit</span></span><br><span class="line">    &#125;</span><br><span class="line">    buildTypes &#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            <span class="comment">// 是否进行混淆</span></span><br><span class="line">            minifyEnabled <span class="literal">false</span></span><br><span class="line">            <span class="comment">// 混淆文件的位置</span></span><br><span class="line">            proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.pro'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123; <span class="comment">// 声明依赖</span></span><br><span class="line">    implementation fileTree(<span class="string">dir:</span> <span class="string">'libs'</span>, <span class="string">include:</span> [<span class="string">'*.jar'</span>]) <span class="comment">// 位于app/libs/下的jar包依赖</span></span><br><span class="line">    implementation <span class="string">'com.android.support:appcompat-v7:26.1.0'</span></span><br><span class="line">    implementation <span class="string">'com.android.support.constraint:constraint-layout:1.1.2'</span></span><br><span class="line">    testImplementation <span class="string">'junit:junit:4.12'</span> <span class="comment">// 单元测试：junit</span></span><br><span class="line">    androidTestImplementation <span class="string">'com.android.support.test:runner:1.0.2'</span></span><br><span class="line">    androidTestImplementation <span class="string">'com.android.support.test.espresso:espresso-core:3.0.2'</span> <span class="comment">// AndroidUI自动化测试框架</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="implementation-vs-compile"><a href="#implementation-vs-compile" class="headerlink" title="implementation vs compile"></a>implementation vs compile</h4><p>从<code>Android Gradle plugin 3.0</code>开始推荐使用<code>implementation</code>和<code>api</code>来替换原先的<code>compile</code>。理论上你可以把所有的<code>compile</code>替换成<code>api</code>。下面说说它们的区别:</p>
+<table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">compile</td>
+<td align="left">本module将会泄露其依赖的module的内容</td>
+</tr>
+<tr>
+<td align="left">api</td>
+<td align="left">同compile</td>
+</tr>
+<tr>
+<td align="left">implementation</td>
+<td align="left">本module不会通过自身的接口向外部暴露其依赖module的内容。推荐使用implementation来进行依赖(而不是api或compile),这会大大改善工程的构建时间</td>
+</tr>
+</tbody></table>
+<p>其他改动:</p>
+<ul>
+<li>provided -&gt; compileOnly</li>
+<li>apk -&gt; runtimeOnly</li>
+<li>testCompile -&gt; testImplementation // 编译测试用例时依赖, 不会打包到发布的产品中</li>
+<li>androidTestCompile -&gt; androidTestImplementation // 编译测试用例时依赖, 不会打包到发布的产品中</li>
+</ul>
+<h3 id="5-4-AndroidManifest-xml"><a href="#5-4-AndroidManifest-xml" class="headerlink" title="5.4 AndroidManifest.xml"></a>5.4 AndroidManifest.xml</h3><p>AS项目模板的<code>AndroidManifest.xml</code>文件内容:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">manifest</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">package</span>=<span class="string">"wang.relish.demo"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">application</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:allowBackup</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:icon</span>=<span class="string">"@mipmap/ic_launcher"</span> // <span class="attr">app</span>桌面<span class="attr">logo</span>。不设置的话是<span class="attr">Android</span>系统自带的图标(不同<span class="attr">Android</span>版本长得不同)。</span></span><br><span class="line"><span class="tag">        <span class="attr">android:label</span>=<span class="string">"@string/app_name"</span> // <span class="attr">App</span>名。不设置的话, 默认为启动的<span class="attr">Activity</span>的全类名</span></span><br><span class="line"><span class="tag">        <span class="attr">android:roundIcon</span>=<span class="string">"@mipmap/ic_launcher_round"</span> // <span class="attr">Android</span> <span class="attr">O</span> 新特性, 原型图标</span></span><br><span class="line"><span class="tag">        <span class="attr">android:supportsRtl</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:theme</span>=<span class="string">"@style/AppTheme"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".MainActivity"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">                <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">application</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">manifest</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="6-总结"><a href="#6-总结" class="headerlink" title="6 总结"></a>6 总结</h2><p>本来只是想介绍一个<strong>不借助IDE可以手写出来的最简单的Android程序</strong>的教程。讲着讲着就想把Android Studio的模板工程目录结构、文件作用都说了一遍, 不知不觉写了这么多。也把我们这个最简单的Android程序一步步拓展成了Android Studio的模板工程。希望各位读者在体会到Android Studio为我们广大Android开发者的开发工作带来莫大的帮助的同时, 明白Android Studio为我们都做了哪些事。</p>
+<h2 id="引用资料"><a href="#引用资料" class="headerlink" title="引用资料"></a>引用资料</h2><p>Wrapper (gradlew): </p>
+<blockquote>
+<p><a href="https://www.zybuluo.com/xtccc/note/275168" target="_blank" rel="noopener">https://www.zybuluo.com/xtccc/note/275168</a>  </p>
+</blockquote>
+<p>Gradle官方文档:</p>
+<blockquote>
+<p><a href="https://docs.gradle.org/current/dsl/index.html" target="_blank" rel="noopener">https://docs.gradle.org/current/dsl/index.html </a>  </p>
+</blockquote>
+<p>Android单元测试-如何开始?</p>
+<blockquote>
+<p><a href="https://www.jianshu.com/p/bc99678b1d6e" target="_blank" rel="noopener">https://www.jianshu.com/p/bc99678b1d6e</a></p>
+</blockquote>
+<p>自适应图标(Adaptive icons):</p>
+<blockquote>
+<p><a href="https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive" target="_blank" rel="noopener">https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive</a></p>
+</blockquote>
+<p>迁移到插件3.0.0:</p>
+<blockquote>
+<p><a href="https://developer.android.com/studio/build/gradle-plugin-3-0-0-migration#new_configurations" target="_blank" rel="noopener">https://developer.android.com/studio/build/gradle-plugin-3-0-0-migration#new_configurations</a>  </p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    <div>
+          
+            
+
+          
+    </div>
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赞赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/wechatpay.jpg" alt="景三 WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/alipay.jpg" alt="景三 Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    景三
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://relish.wang/posts/24586/" title="从手写最简单的Android程序到Android Studio项目模板的全面解析">https://relish.wang/posts/24586/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android-Studio/" rel="tag"># Android Studio</a> <!-- 这个#号是文章底部的tag们 -->
+          
+            <a href="/tags/Template/" rel="tag"># Template</a> <!-- 这个#号是文章底部的tag们 -->
+          
+            <a href="/tags/gradle/" rel="tag"># gradle</a> <!-- 这个#号是文章底部的tag们 -->
+          
+            <a href="/tags/gradlew/" rel="tag"># gradlew</a> <!-- 这个#号是文章底部的tag们 -->
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/49348/" rel="next" title="refusing to merge unrelated histories">
+                <i class="fa fa-chevron-left"></i> refusing to merge unrelated histories
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/24587/" rel="prev" title="精读《电梯调度算法》">
+                精读《电梯调度算法》 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微薄</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+       
+         <div onclick="ShowGitment()" id="gitment-display-button">显示 Gitment 评论</div>
+         <div id="gitment-container" style="display:none"></div>
+       
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/avatar.jpg" alt="景三">
+          <p class="site-author-name" itemprop="name">景三</p>
+           
+              <p class="site-description motion-element" itemprop="description">Android Developer</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/relish-wang" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://stackoverflow.com/users/8012330/relish-wang" target="_blank" title="StackOverflow">
+                  
+                    <i class="fa fa-fw fa-stack-overflow"></i>
+                  
+                    
+                      StackOverflow
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/u/775df29e8e5d" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-book"></i>
+                  
+                    
+                      简书
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/r3lish" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-book"></i>
+                  
+                    
+                      CSDN
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://oj.relish.wang/" title="新城中学在线评测系统" target="_blank">新城中学在线评测系统</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://blog.souche.com/" title="大搜车无线团队" target="_blank">大搜车无线团队</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-序言"><span class="nav-number">1.</span> <span class="nav-text">0 序言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-准备"><span class="nav-number">2.</span> <span class="nav-text">1 准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-配置gradle"><span class="nav-number">2.1.</span> <span class="nav-text">1.1 配置gradle</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-写一个最最简单的Android程序"><span class="nav-number">3.</span> <span class="nav-text">2 写一个最最简单的Android程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-生成项目的构建文件"><span class="nav-number">4.</span> <span class="nav-text">3 生成项目的构建文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#执行完成"><span class="nav-number">4.1.</span> <span class="nav-text">执行完成</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-由简入繁"><span class="nav-number">5.</span> <span class="nav-text">4 由简入繁</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-Gradle-Wrapper"><span class="nav-number">5.1.</span> <span class="nav-text">4.1 Gradle Wrapper</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-多工程配置"><span class="nav-number">5.2.</span> <span class="nav-text">4.2 多工程配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#settings-gradle"><span class="nav-number">5.2.1.</span> <span class="nav-text">settings.gradle</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#子工程配置"><span class="nav-number">5.2.2.</span> <span class="nav-text">子工程配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-其他未介绍的文件"><span class="nav-number">5.3.</span> <span class="nav-text">4.3 其他未介绍的文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-app主工程"><span class="nav-number">6.</span> <span class="nav-text">5 app主工程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-单元测试"><span class="nav-number">6.1.</span> <span class="nav-text">5.1 单元测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-资源文件"><span class="nav-number">6.2.</span> <span class="nav-text">5.2 资源文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#drawable"><span class="nav-number">6.2.1.</span> <span class="nav-text">drawable</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#layout"><span class="nav-number">6.2.2.</span> <span class="nav-text">layout</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mipmap"><span class="nav-number">6.2.3.</span> <span class="nav-text">mipmap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#values"><span class="nav-number">6.2.4.</span> <span class="nav-text">values</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他资源文件"><span class="nav-number">6.2.5.</span> <span class="nav-text">其他资源文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-app-build-gradle"><span class="nav-number">6.3.</span> <span class="nav-text">5.3 app/build.gradle</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#implementation-vs-compile"><span class="nav-number">6.3.1.</span> <span class="nav-text">implementation vs compile</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-AndroidManifest-xml"><span class="nav-number">6.4.</span> <span class="nav-text">5.4 AndroidManifest.xml</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-总结"><span class="nav-number">7.</span> <span class="nav-text">6 总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用资料"><span class="nav-number">8.</span> <span class="nav-text">引用资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">景三</span>
+</div>
+
+<span id="sitetime"></span>
+<script language="javascript">
+	function siteTime(){
+		window.setTimeout("siteTime()", 1000);
+		var seconds = 1000;
+		var minutes = seconds * 60;
+		var hours = minutes * 60;
+		var days = hours * 24;
+		var years = days * 365;
+
+		var today = new Date();
+		var todayYear = today.getFullYear();
+		var todayMonth = today.getMonth()+1;
+		var todayDate = today.getDate();
+		var todayHour = today.getHours();
+		var todayMinute = today.getMinutes();
+		var todaySecond = today.getSeconds();
+		<!--
+		/* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+		year - 作为date对象的年份，为4位年份值
+		month - 0-11之间的整数，做为date对象的月份
+		day - 1-31之间的整数，做为date对象的天数
+		hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+		minutes - 0-59之间的整数，做为date对象的分钟数
+		seconds - 0-59之间的整数，做为date对象的秒数
+		microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+		-->
+		var t1 = Date.UTC(2016,08,25,9,00,00); <!-- 北京时间2016-8-25 00:00:00 是我入职税友的时间(第一次参加工作(实习)的时间) -->
+		var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+		var diff = t2-t1;
+
+		var diffYears = Math.floor(diff/years);
+		var diffDays = Math.floor((diff/days)-diffYears*365);
+		var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+		var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+		var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+
+	    document.getElementById("sitetime").innerHTML=" 本站已运行"+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+	}  /* 因为建站时间还没有一年，就将之注释掉了。需要的可以取消 */
+	siteTime();
+</script>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+
+    <div class="theme-info">
+      <div class="powered-by"></div>
+      <span class="post-count">博客全站共26.4k字</span>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+   
+   
+   
+   
+   <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+   <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+   
+       <script type="text/javascript">
+           function ShowGitment(){
+               document.getElementById("gitment-display-button").style.display = "none";
+               document.getElementById("gitment-container").style.display = "block";
+               var gitment = new Gitment({
+                   id: document.location.href,
+                   owner: 'relish-wang',
+                   repo: 'relish-wang.github.io',
+                   oauth: {
+                       client_id: '1c0d6e867723f2ccd28c',
+                       client_secret: '0c272975d0604dfe8ae56691ca204b8f226df5ea',
+                   }});
+               gitment.render('gitment-container');
+           }
+       </script>
+   
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("JNpHnH5xteXpGDJi3r2sAORA-gzGzoHsz", "nRjV2vJaN1xJ9MPx848hbRLu");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+
+
+  
+
+  
+
+  <script type="text/javascript" src="/lib/clipboard/clipboard.js"></script>
+<script type="text/javascript" src="/js/src/custom.js"></script>
+  
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
+</html>
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>

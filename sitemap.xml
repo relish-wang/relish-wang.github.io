@@ -2,16 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://relish.wang/posts/1/</loc>
+    <loc>https://relish.wang/about/index.html</loc>
     
-    <lastmod>2020-02-18T06:05:52.363Z</lastmod>
+    <lastmod>2020-07-02T07:43:46.893Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://relish.wang/posts/0/</loc>
+    <loc>https://relish.wang/posts/960/</loc>
     
-    <lastmod>2020-02-16T07:02:35.265Z</lastmod>
+    <lastmod>2020-07-02T07:10:04.862Z</lastmod>
     
   </url>
   
@@ -51,13 +51,6 @@
   </url>
   
   <url>
-    <loc>https://relish.wang/about/index.html</loc>
-    
-    <lastmod>2019-06-15T18:43:38.246Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://relish.wang/posts/1828/</loc>
     
     <lastmod>2019-06-15T18:43:38.235Z</lastmod>
@@ -79,13 +72,6 @@
   </url>
   
   <url>
-    <loc>https://relish.wang/posts/28209/</loc>
-    
-    <lastmod>2019-06-15T18:43:38.224Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://relish.wang/posts/24453/</loc>
     
     <lastmod>2019-06-15T18:43:38.224Z</lastmod>
@@ -93,14 +79,21 @@
   </url>
   
   <url>
-    <loc>https://relish.wang/posts/63693/</loc>
+    <loc>https://relish.wang/posts/28209/</loc>
+    
+    <lastmod>2019-06-15T18:43:38.224Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://relish.wang/posts/26735/</loc>
     
     <lastmod>2019-06-15T18:43:38.223Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://relish.wang/posts/26735/</loc>
+    <loc>https://relish.wang/posts/63693/</loc>
     
     <lastmod>2019-06-15T18:43:38.223Z</lastmod>
     

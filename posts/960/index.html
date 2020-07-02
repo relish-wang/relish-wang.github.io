@@ -105,20 +105,20 @@
 
 
 
-<meta name="description" content="使用WorkManager来处理后台任务(Kotlin版)(一) 原文地址: 《Background Work with WorkManager - Kotlin》  1 简介在Android开发中有很多用于处理延迟处理的后台任务的方式。这个代码实验室(codelab)涵盖了WorkManager(一个向后兼容的、灵活的、简单易用的、用于延迟处理后台任务的代码库(library))的用法。 什么是">
+<meta name="description" content="使用WorkManager来处理后台任务(Kotlin版)(一) 原文地址: 《Background Work with WorkManager - Kotlin》  1 简介在Android开发中有很多用于处理延迟处理的后台任务的方式。这个代码实验室(codelab)涵盖了WorkManager(一个向后兼容的、灵活的、简单易用的、用于延迟处理后台任务的代码库(library))的用法。">
 <meta name="keywords" content="Android,JetPack">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用WorkManager来处理后台任务(Kotlin版)(一)">
 <meta property="og:url" content="https://relish.wang/posts/960/index.html">
 <meta property="og:site_name" content="景三的个人小站">
-<meta property="og:description" content="使用WorkManager来处理后台任务(Kotlin版)(一) 原文地址: 《Background Work with WorkManager - Kotlin》  1 简介在Android开发中有很多用于处理延迟处理的后台任务的方式。这个代码实验室(codelab)涵盖了WorkManager(一个向后兼容的、灵活的、简单易用的、用于延迟处理后台任务的代码库(library))的用法。 什么是">
+<meta property="og:description" content="使用WorkManager来处理后台任务(Kotlin版)(一) 原文地址: 《Background Work with WorkManager - Kotlin》  1 简介在Android开发中有很多用于处理延迟处理的后台任务的方式。这个代码实验室(codelab)涵盖了WorkManager(一个向后兼容的、灵活的、简单易用的、用于延迟处理后台任务的代码库(library))的用法。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://relish.wang/posts/960/clear.png">
 <meta property="og:image" content="https://relish.wang/posts/960/blurry.png">
-<meta property="og:updated_time" content="2020-07-02T07:10:04.862Z">
+<meta property="og:updated_time" content="2020-07-02T07:55:21.673Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用WorkManager来处理后台任务(Kotlin版)(一)">
-<meta name="twitter:description" content="使用WorkManager来处理后台任务(Kotlin版)(一) 原文地址: 《Background Work with WorkManager - Kotlin》  1 简介在Android开发中有很多用于处理延迟处理的后台任务的方式。这个代码实验室(codelab)涵盖了WorkManager(一个向后兼容的、灵活的、简单易用的、用于延迟处理后台任务的代码库(library))的用法。 什么是">
+<meta name="twitter:description" content="使用WorkManager来处理后台任务(Kotlin版)(一) 原文地址: 《Background Work with WorkManager - Kotlin》  1 简介在Android开发中有很多用于处理延迟处理的后台任务的方式。这个代码实验室(codelab)涵盖了WorkManager(一个向后兼容的、灵活的、简单易用的、用于延迟处理后台任务的代码库(library))的用法。">
 <meta name="twitter:image" content="https://relish.wang/posts/960/clear.png">
 
 
@@ -450,6 +450,8 @@
 <p>原文地址: <a href="https://codelabs.developers.google.com/codelabs/android-workmanager-kt/#0" target="_blank" rel="noopener">《Background Work with WorkManager - Kotlin》</a></p>
 </blockquote>
 <h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p>在Android开发中有很多用于处理延迟处理的后台任务的方式。这个<em>代码实验室</em>(codelab)涵盖了<em>WorkManager</em>(一个向后兼容的、灵活的、简单易用的、用于延迟处理后台任务的<em>代码库</em>(library))的用法。</p>
+<a id="more"></a>
+
 <h3 id="什么是WorkManager"><a href="#什么是WorkManager" class="headerlink" title="什么是WorkManager"></a>什么是WorkManager</h3><p>WorkManager是Android JetPack的一部分，是结合了机会性执行和保证执行的的用于处理后台任务的<em>架构组件</em>（Architecture Component）。机会性执行，意为WorkManager将尽快完成您的后台工作。保证执行，意为无论在什么样的情况下,即使用户离开了应用程序, WorkManager也会保证按逻辑执行工作。</p>
 <p>WorkManager是一个难以置信的、灵活的代码库，它拥有很多额外的优势。比如:</p>
 <ul>
@@ -600,6 +602,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/posts/1/" rel="prev" title="ViewModel一个简单例子">
+                ViewModel一个简单例子 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -704,7 +710,7 @@ var jiathis_config={
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -935,7 +941,7 @@ var jiathis_config={
 
     <div class="theme-info">
       <div class="powered-by"></div>
-      <span class="post-count">博客全站共27.3k字</span>
+      <span class="post-count">博客全站共29.9k字</span>
     </div>
 </div>
 

@@ -105,16 +105,20 @@
 
 
 
-<meta name="description" content="Android Developer">
-<meta property="og:type" content="website">
+<meta name="description" content="使用WorkManager来处理后台任务(Kotlin版)(一) 原文地址: 《Background Work with WorkManager - Kotlin》  1 简介在Android开发中有很多用于处理延迟处理的后台任务的方式。这个代码实验室(codelab)涵盖了WorkManager(一个向后兼容的、灵活的、简单易用的、用于延迟处理后台任务的代码库(library))的用法。 什么是">
+<meta property="og:type" content="article">
 <meta property="og:title" content="景三的个人小站">
-<meta property="og:url" content="https://relish.wang/tags/maven/index.html">
+<meta property="og:url" content="https://relish.wang/posts/0/index.html">
 <meta property="og:site_name" content="景三的个人小站">
-<meta property="og:description" content="Android Developer">
+<meta property="og:description" content="使用WorkManager来处理后台任务(Kotlin版)(一) 原文地址: 《Background Work with WorkManager - Kotlin》  1 简介在Android开发中有很多用于处理延迟处理的后台任务的方式。这个代码实验室(codelab)涵盖了WorkManager(一个向后兼容的、灵活的、简单易用的、用于延迟处理后台任务的代码库(library))的用法。 什么是">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://relish.wang/posts/0/clear.png">
+<meta property="og:image" content="https://relish.wang/posts/0/blurry.png">
+<meta property="og:updated_time" content="2020-02-16T07:02:35.265Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="景三的个人小站">
-<meta name="twitter:description" content="Android Developer">
+<meta name="twitter:description" content="使用WorkManager来处理后台任务(Kotlin版)(一) 原文地址: 《Background Work with WorkManager - Kotlin》  1 简介在Android开发中有很多用于处理延迟处理的后台任务的方式。这个代码实验室(codelab)涵盖了WorkManager(一个向后兼容的、灵活的、简单易用的、用于延迟处理后台任务的代码库(library))的用法。 什么是">
+<meta name="twitter:image" content="https://relish.wang/posts/0/clear.png">
 
 
 
@@ -143,13 +147,13 @@
 
 
 
-  <link rel="canonical" href="https://relish.wang/tags/maven/">
+  <link rel="canonical" href="https://relish.wang/posts/0/">
 
 
 
 
 
-  <title>标签: maven | 景三的个人小站</title>
+  <title> | 景三的个人小站</title>
   
 
 
@@ -178,7 +182,7 @@
     
   
 
-  <div class="container sidebar-position-right  ">
+  <div class="container sidebar-position-right page-post-detail ">
     <div class="headband"></div>
     <a href="https://github.com/relish-wang">
      <!-- 主页右上角github徽标(主题色#49b1f5) -->
@@ -290,52 +294,330 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>maven<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://relish.wang/posts/0/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="景三">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="景三的个人小站">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/posts/3877/" itemprop="url">
-              
-                <span itemprop="name">如何上传Android构件(aar)到sonatype远程maven仓库</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-06-16T10:45:41+08:00" content="2019-06-16">
-          06-16
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-16T14:10:39+08:00">
+                2020-02-16
+              </time>
+            
 
-    </header>
-  </article>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/posts/0/" class="leancloud_visitors" data-flag-title>
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                <span>℃</span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  852
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  3 分
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="使用WorkManager来处理后台任务-Kotlin版-一"><a href="#使用WorkManager来处理后台任务-Kotlin版-一" class="headerlink" title="使用WorkManager来处理后台任务(Kotlin版)(一)"></a>使用WorkManager来处理后台任务(Kotlin版)(一)</h1><blockquote>
+<p>原文地址: <a href="https://codelabs.developers.google.com/codelabs/android-workmanager-kt/#0" target="_blank" rel="noopener">《Background Work with WorkManager - Kotlin》</a></p>
+</blockquote>
+<h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h2><p>在Android开发中有很多用于处理延迟处理的后台任务的方式。这个<em>代码实验室</em>(codelab)涵盖了<em>WorkManager</em>(一个向后兼容的、灵活的、简单易用的、用于延迟处理后台任务的<em>代码库</em>(library))的用法。</p>
+<h3 id="什么是WorkManager"><a href="#什么是WorkManager" class="headerlink" title="什么是WorkManager"></a>什么是WorkManager</h3><p>WorkManager是Android JetPack的一部分，是结合了机会性执行和保证执行的的用于处理后台任务的<em>架构组件</em>（Architecture Component）。机会性执行，意为WorkManager将尽快完成您的后台工作。保证执行，意为无论在什么样的情况下,即使用户离开了应用程序, WorkManager也会保证按逻辑执行工作。</p>
+<p>WorkManager是一个难以置信的、灵活的代码库，它拥有很多额外的优势。比如:</p>
+<ul>
+<li>调度一次性或周期性异步任务</li>
+<li>支持网络条件，存储空间和充电状态等约束</li>
+<li>将任务链接起来，包括并行运行的任务</li>
+<li>一个任务的输出结果用于另一个任务的输入参数</li>
+<li>向后兼容到API 14</li>
+<li>使不使用Google Play服务都可以</li>
+<li>遵循系统健康最佳实践</li>
+<li>配合LiveData可以轻松在UI中显示工作的请求状态</li>
+</ul>
+<blockquote>
+<p>注意:</p>
+<p>WorkManager提供了一些API。例如: JobSCheduler和AlarmManager。WorkManager根据诸如用户设备API之类的条件选择要使用的正确API。欲了解更多信息，请查阅<a href="https://developer.android.com/topic/libraries/architecture/workmanager/" target="_blank" rel="noopener">WorkManager文档</a>。</p>
+</blockquote>
+<h3 id="什么时候使用WorkManager"><a href="#什么时候使用WorkManager" class="headerlink" title="什么时候使用WorkManager"></a>什么时候使用WorkManager</h3><p>对于即使用户离开特定的屏幕或您的应用程序也需要完成的有价值的任务，WorkManager库也是个不错的选择。</p>
+<p>以下是使用WorkManager的几个简单例子:</p>
+<ul>
+<li>上传日志</li>
+<li>用于过滤图片和保存图片</li>
+<li>定期将本地数据与网络同步</li>
+</ul>
+<p>WorkManager提供有保证的执行，但并非所有任务都需要执行。因此，这不是将所有任务避免在主线程中运行的万能方法。</p>
+<p>有关何时使用WorkManager的更多详细信息，请查阅<a href="https://developer.android.com/guide/background/" target="_blank" rel="noopener">《后台处理指南》</a>。</p>
+<h3 id="你会建立什么"><a href="#你会建立什么" class="headerlink" title="你会建立什么"></a>你会建立什么</h3><p>近些年来，智能手机越来越擅长拍照。摄影师能够可靠地模糊拍摄神秘事物的日子已经一去不复返了。在此代码实验室中，您将使用Blur-O-Matic，该应用程序可模糊照片和图像并将结果保存到文件中。那是尼斯湖怪兽或evelopera玩具潜水艇吗？使用Blur-O-Matic，没人会知道。</p>
+<p><img src="/posts/0/clear.png" alt> <img src="/posts/0/blurry.png" alt></p>
+<h3 id="你会学到什么"><a href="#你会学到什么" class="headerlink" title="你会学到什么"></a>你会学到什么</h3><ul>
+<li><p>在你的项目中使用WorkManager</p>
+</li>
+<li><p>安排一个简单的任务</p>
+</li>
+<li><p>输入和输出参数</p>
+</li>
+<li><p>串行的任务</p>
+</li>
+<li><p>独特的任务</p>
+</li>
+<li><p>将任务状态展示在UI上</p>
+</li>
+<li><p>取消任务</p>
+</li>
+<li><p>任务约束</p>
+</li>
+</ul>
+<h3 id="你需要什么"><a href="#你需要什么" class="headerlink" title="你需要什么"></a>你需要什么</h3><ul>
+<li>最新稳定版Android Studio</li>
+<li>你需要熟悉LiveData和ViewModel。如果你对这些类还不够熟悉，查阅<a href="https://codelabs.developers.google.com/codelabs/android-lifecycles/#0" target="_blank" rel="noopener">《Android生命周期感知组件Codelab》</a>(专门介绍LiveData和ViewModel)或者<a href="https://codelabs.developers.google.com/codelabs/android-room-with-a-view/#0" target="_blank" rel="noopener">《Room和View》</a>（架构组件(Architecture Components)的介绍）</li>
+</ul>
+<h3 id="如何你在任何地方卡关了"><a href="#如何你在任何地方卡关了" class="headerlink" title="如何你在任何地方卡关了"></a>如何你在任何地方卡关了</h3><p>如果你卡关了，如果你需要查看最终状态的代码，你可以使用下面的代码链接:</p>
+<p><a href="https://github.com/googlecodelabs/android-workmanager/archive/kotlin.zip" target="_blank" rel="noopener">下载最终代码</a></p>
+<p>或者, 如果你更希望从Github克隆完整的WorkManager的代码实验室的代码：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone -b kotlin https://github.com/googlecodelabs/android-workmanager</span><br></pre></td></tr></table></figure>
 
 
       
     </div>
+    
+    
+    
 
+    <div>
+          
+            
+
+          
+    </div>
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>赞赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/wechatpay.jpg" alt="景三 WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/alipay.jpg" alt="景三 Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    景三
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://relish.wang/posts/0/" title>https://relish.wang/posts/0/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/62750/" rel="next" title="2019就此告别2020新的征程">
+                <i class="fa fa-chevron-left"></i> 2019就此告别2020新的征程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/1/" rel="prev" title>
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微薄</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
 
 
           </div>
@@ -343,6 +625,15 @@
 
 
           
+  <div class="comments" id="comments">
+    
+       
+         <div onclick="ShowGitment()" id="gitment-display-button">显示 Gitment 评论</div>
+         <div id="gitment-container" style="display:none"></div>
+       
+    
+  </div>
+
 
         </div>
         
@@ -363,8 +654,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image" src="/avatar.jpg" alt="景三">
           <p class="site-author-name" itemprop="name">景三</p>
@@ -494,6 +794,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用WorkManager来处理后台任务-Kotlin版-一"><span class="nav-number">1.</span> <span class="nav-text">使用WorkManager来处理后台任务(Kotlin版)(一)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-简介"><span class="nav-number">1.1.</span> <span class="nav-text">1 简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是WorkManager"><span class="nav-number">1.1.1.</span> <span class="nav-text">什么是WorkManager</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么时候使用WorkManager"><span class="nav-number">1.1.2.</span> <span class="nav-text">什么时候使用WorkManager</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#你会建立什么"><span class="nav-number">1.1.3.</span> <span class="nav-text">你会建立什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#你会学到什么"><span class="nav-number">1.1.4.</span> <span class="nav-text">你会学到什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#你需要什么"><span class="nav-number">1.1.5.</span> <span class="nav-text">你需要什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何你在任何地方卡关了"><span class="nav-number">1.1.6.</span> <span class="nav-text">如何你在任何地方卡关了</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -679,10 +995,10 @@
 
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 
@@ -879,26 +1195,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
